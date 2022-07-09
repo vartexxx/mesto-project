@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="./pages/index.css">
+
+        <title>Проект Место</title>
+    </head>
+
+    <body class="page">
+
+            <header class="header">
+                <img src="./images/logo.svg" alt="Лого Место Россия" class="header__logo">
+            </header>
+
+            <main class="main">
+
+                <section class="profile">
+
+                    <img src="./images/avatar_image.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+                    <div class="profile__info">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <p class="profile__hobby">Исследователь океана</p>
+                        <button type="submit" class="profile__edit-button"></button>
+                        <button type="submit" class="profile__add-button"></button>
+                    </div>
+
+                </section>
+
+                <section class="elements">
+
+                    <div class="element">
+                        <img src="./images/Ufa_1.jpg" alt="" class="element__image">
+                        <h2 class="element__title">Уфа</h2>
+                        <button type="submit" class="element__like"></button>
+                    </div>
+
+                    <div class="element">
+                        <img src="./images/Ufa_2.jpg" alt="" class="element__image">
+                        <h2 class="element__title">Гроза</h2>
+                        <button type="submit" class="element__like"></button>
+                    </div>
+
+                    <div class="element">
+                        <img src="./images/Ufa_3.jpg" alt="" class="element__image">
+                        <h2 class="element__title">Идель Тауер</h2>
+                        <button type="submit" class="element__like"></button>
+                    </div>
+
+                    <div class="element">
+                        <img src="./images/Ufa_4.jpg" alt="" class="element__image">
+                        <h2 class="element__title">Центр</h2>
+                        <button type="submit" class="element__like"></button>
+                    </div>
+
+                    <div class="element">
+                        <img src="./images/Ufa_5.jpg" alt="" class="element__image">
+                        <h2 class="element__title">Уфа сверху</h2>
+                        <button type="submit" class="element__like"></button>
+                    </div>
+
+                    <div class="element">
+                        <img src="./images/Ufa_6.jpg" alt="" class="element__image">
+                        <h2 class="element__title">Республика Башкортостан</h2>
+                        <button type="submit" class="element__like"></button>
+                    </div>
+
+                </section>
+            </main>
+
+            <footer class="footer">
+                <div class="footer__copy">&copy; 2020 Mesto Russia</div>
+            </footer>
+
+            <section class="popup popup_opened">
+                <div class="popup__container">
+                    <button type="button" class="popup__exit"></button>
+                    <form action="#" class="form">
+                        <h3 class="form__title">Редактировать профиль</h3>
+                        <input type="text" class="form__name" value="Жак-Ив Кусто">
+                        <input type="text" class="form__hobby" value="Исследователь океана">
+                    </form>
+                    <button type="button" class="form__save">Сохранить</button>
+                </div>
+            </section>
+    </body>
+</html>

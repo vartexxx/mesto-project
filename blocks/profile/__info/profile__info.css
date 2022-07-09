@@ -1,0 +1,27 @@
+.profile__info {
+    grid-area: profile;
+    display: grid;
+    flex-grow: 1;
+    position: relative;
+    margin: 0;
+    margin-top: 12px;
+    padding: 0;
+    gap: 16px 18px;
+    max-height: 120px;
+    grid-template: 1fr 1fr / min-content auto auto ;
+    grid-template-areas: 'name check added'
+                         'hobby hobby added';
+}
+
+@media screen and (max-width: 680px) {
+    .profile__info {
+        grid-template: 1fr 1fr 1fr/ max-content min-content;
+        grid-template-areas: 'name name'
+                             'hobby hobby'
+                             'added added';
+        margin: 0 auto;
+        gap: 0px;
+        max-height: max-content;
+        margin-top: 26px;
+    }
+}

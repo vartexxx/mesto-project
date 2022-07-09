@@ -1,0 +1,25 @@
+.popup__exit {
+    background: url(../../../images/close.svg);
+    border: none;
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    bottom: calc(330px + 8px);
+    left: calc(430px + 8px);
+    cursor: pointer;
+    transition: opacity .6s ease;
+}
+
+.popup__exit:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 560px) {
+    .popup__exit {
+        background: url(../../../images/close_mobile.svg);
+        width: 20px;
+        height: 20px;
+        bottom: calc(322px + 16px);
+        left: calc(282px - 20px);
+    }
+}

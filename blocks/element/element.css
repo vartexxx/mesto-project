@@ -1,0 +1,9 @@
+.element {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr;
+    grid-template-areas: 
+        'element_image'
+        'element_title';
+    background-color: #fff;
+    border-radius: 10px;
+}

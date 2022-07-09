@@ -1,0 +1,17 @@
+.profile {
+    display: grid;
+    margin-top: 40px;
+    grid-template: 1fr / minmax(120px, 120px) auto;
+    grid-template-areas: 'avatar profile';
+}
+
+@media screen and (max-width: 680px) {
+    .profile {
+        grid-template-columns: 1fr;
+        grid-template-rows: 120px 1fr;
+        grid-template-areas: 
+        'avatar'
+        'profile';
+    margin-top: 42px;
+    }
+}

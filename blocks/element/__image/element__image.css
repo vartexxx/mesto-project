@@ -1,0 +1,14 @@
+.element__image {
+    grid-area: element_image;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+@media screen and (max-width: 880px) {
+    .element__image {
+        max-height: 282px;
+    }
+}
