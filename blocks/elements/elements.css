@@ -19,5 +19,6 @@
     .elements {
         grid-template-columns: minmax(282px, 1fr);
         margin-top: 36px;
+        row-gap: 20px;
     }
 }

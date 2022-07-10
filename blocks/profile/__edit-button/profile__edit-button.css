@@ -1,7 +1,8 @@
 .profile__edit-button {
-    grid-area: check;
-    margin-bottom: 3%;
+    display: flex;
     padding: 0;
+    grid-row-start: 1;
+    grid-column-start: 2;
     border: 1px solid #fff;
     width: 24px;
     height: 24px;
@@ -9,7 +10,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-color: #000;
-    align-self: end;
+    align-self: center;
     cursor: pointer;
     transition: opacity .5s ease;
 }
@@ -20,12 +21,16 @@
 
 @media screen and (max-width: 680px) {
     .profile__edit-button {
+        grid-area: check;
+        background-size: 50%;
+        margin: 0;
+        margin-right: 19px;
         grid-area: name;
-        justify-self: end;
-        align-self: center;
+        justify-self: start;
         grid-row: 1;
+        grid-column: 2;
+        align-self: center;
         width: 18px;
         height: 18px;
-        margin-right: 5%;
     }
 }

@@ -1,27 +1,21 @@
 .profile__info {
-    grid-area: profile;
     display: grid;
+    grid-template-columns: fit-content(336px) min-content;
     flex-grow: 1;
+    gap: 16px 18px;
     position: relative;
     margin: 0;
-    margin-top: 12px;
     padding: 0;
-    gap: 16px 18px;
-    max-height: 120px;
-    grid-template: 1fr 1fr / min-content auto auto ;
-    grid-template-areas: 'name check added'
-                         'hobby hobby added';
+    margin-left: 30px;
 }
 
 @media screen and (max-width: 680px) {
     .profile__info {
-        grid-template: 1fr 1fr 1fr/ max-content min-content;
-        grid-template-areas: 'name name'
-                             'hobby hobby'
-                             'added added';
-        margin: 0 auto;
-        gap: 0px;
-        max-height: max-content;
+        grid-template-columns: 1fr min-content;
+        grid-template-areas: 'name check'
+                             'hobby check';
+        gap: 14px 10px;
         margin-top: 26px;
+        justify-content: center;
     }
 }
