@@ -10,3 +10,5 @@
 * Grid Layout
 * Figma
 * Картинки
+
+## Ссылка на проект GitHub Pages (https://vartexxx.github.io/mesto-project/index.html)
