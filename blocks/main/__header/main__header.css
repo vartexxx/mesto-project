@@ -1,0 +1,15 @@
+.main__header {
+    margin: 0 auto;
+    padding-top: 45px;
+    padding-bottom: 40px;
+}
+
+@media screen and (max-width: 680px) {
+    .main__header {
+        margin: 0;
+        padding: 0;
+        padding-left: 27px;
+        margin-top: 28px;
+        padding-bottom: 27.6px;
+    }
+}

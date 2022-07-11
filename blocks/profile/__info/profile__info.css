@@ -3,9 +3,6 @@
     grid-template-columns: fit-content(336px) min-content;
     flex-grow: 1;
     gap: 16px 18px;
-    position: relative;
-    margin: 0;
-    padding: 0;
     margin-left: 30px;
 }
 
@@ -17,5 +14,7 @@
         gap: 14px 10px;
         margin-top: 26px;
         justify-content: center;
+        max-height: 54px;
+        margin-left: calc(30px + 15px);
     }
 }
