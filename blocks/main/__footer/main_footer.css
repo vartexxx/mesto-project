@@ -1,14 +1,11 @@
 .main__footer {
-    margin: 0 auto;
-    margin-top: 67px;
+    margin: 67px auto;
     padding-bottom: 60px;
 }
 
 @media screen and (max-width: 880px) {
     .main__footer {
-        margin-top: 48px;
-        margin-left: 19px;
-        margin-right: 19px;
+        margin: 48px 19px 0px;
         padding-bottom: 36px;
     }
 }

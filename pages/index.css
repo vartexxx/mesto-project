@@ -32,13 +32,14 @@
 @import url(../blocks/footer/__copy/footer__copy.css);
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__exit/popup__exit.css);
 
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__title/form__title.css);
-@import url(../blocks/form/__profile/form__profile.css);
-@import url(../blocks/form/__profile/_name/form__profile_name.css);
-@import url(../blocks/form/__profile/_hobby/form__profile_hobby.css);
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_hobby/form__input_hobby.css);
+@import url(../blocks/form/__input/_name/form__profile_name.css);
 @import url(../blocks/form/__save/form__save.css);
