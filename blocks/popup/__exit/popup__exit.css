@@ -5,8 +5,8 @@
     height: 32px;
     width: 32px;
     position: absolute;
-    bottom: calc(330px + 8px);
-    left: calc(430px + 8px);
+    top: -40px;
+    right: -40px;
     cursor: pointer;
     transition: opacity .6s ease;
 }
@@ -20,7 +20,7 @@
         background: url(../../../images/close_mobile.svg);
         width: 20px;
         height: 20px;
-        bottom: calc(322px + 16px);
-        left: calc(282px - 20px);
+        top: -32px;
+        right: 0px;
     }
 }
