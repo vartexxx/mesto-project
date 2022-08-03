@@ -1,6 +1,6 @@
 .element {
     display: grid;
-    grid-template: 1fr 1fr / 1fr;
+    grid-template: 282px calc(361px - 282px)/ 1fr;
     grid-template-areas: 
         'element_image'
         'element_title';

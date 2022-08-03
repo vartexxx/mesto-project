@@ -24,8 +24,7 @@
     .form__save {
         width: 238px;
         height: 46px;
-        margin-left: 22px;
-        margin-right: 22px;
+        margin: 45px auto 25px;
         font-size: 14px;
         line-height: 17px;
     }
