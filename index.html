@@ -43,10 +43,18 @@
             <div id="popup-profile" class="popup">
                 <div class="popup__container">
                     <button type="button" class="popup__exit"></button>
-                    <form action="#" class="popup__form form">
+                    <form action="#" class="popup__form form" name="profile-form" novalidate>
                         <h3 class="form__title">Редактировать профиль</h3>
-                        <input type="text" placeholder="Введите ваше имя" class="form__input form__input_name" value="Жак-Ив Кусто">
-                        <input type="text" placeholder="Введите ваше хобби" class="form__input form__input_hobby" value="Исследователь океана">
+                        <input
+                            type="text" placeholder="Введите ваше имя" class="form__input form__input_name" 
+                            required minlength="2" maxlength="40" id="form__input-name"
+                        >
+                        <span class="form__error form__name-error"></span>
+                        <input
+                            type="text" placeholder="Введите ваше хобби" class="form__input form__input_hobby" 
+                            required minlength="2" maxlength="200" id="form__input-hobby"
+                        >
+                        <span class="form__error form__hobby-error"></span>
                         <button type="submit" class="form__save">Сохранить</button>
                     </form>
                 </div>
@@ -84,5 +92,6 @@
 
     <script src="./src/initial-cards.js"></script>
     <script src="./src/script.js"></script>
+    <script src="./src/validation.js"></script>
     </body>
 </html>
