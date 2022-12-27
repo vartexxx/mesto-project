@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import { enableValidation } from './validate.js';
 import { openPopup, closePopup, openEditAvatarPopup, openAddCardPopup } from './modal.js';
 import { createCard } from './card.js';

@@ -4,7 +4,7 @@ const validationObjects = {
     formFieldset: '.form__fieldset',
     submitButtonSelector: '.form__submit',
     inactiveButtonClass: 'form__submit_disabled',
-    inputErrorClass: 'form__input_type_error',
+    inputErrorClass: 'form__input_invalid',
     errorClass: 'form__input-error_active',
 }
 
