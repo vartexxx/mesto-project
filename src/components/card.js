@@ -1,6 +1,6 @@
-import { cardTemplate, cardList} from "./index.js";
+import { cardTemplate} from "./index.js";
 import { openImagePopup } from "./modal.js";
-import { deleteCard } from "./utils.js";
+import { deleteCard, switchLikeButton } from "./utils.js";
 
 export function createCard(card) {
     const newCard = cardTemplate.cloneNode(true);
@@ -18,8 +18,6 @@ export function createCard(card) {
   
     newCardDelete.addEventListener('click', () => deleteCard(newCardElement));
   
-    newCardLike.addEventListener('click', (element) =>
-    element.target.classList.toggle('element__like_active')
-    )
+    newCardLike.addEventListener('click', (element) => switchLikeButton(element));
     return newCard;
 }
