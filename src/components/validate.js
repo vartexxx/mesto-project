@@ -10,7 +10,7 @@ export function enableValidation(config){
 
 const isValid = (formElement, inputElement, config) => {
     if (inputElement.validity.patternMismatch) {
-        inputElement.setCustomValidity(inputElement.dataset.errorMessage);
+        inputElement.setCustomValidity(inputElement.dataset.error);
     } else {
         inputElement.setCustomValidity('');
     }
