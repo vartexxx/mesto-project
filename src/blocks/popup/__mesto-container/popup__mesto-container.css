@@ -1,0 +1,5 @@
+@media screen and (max-width: 560px) {
+    .popup__mesto-container {
+        min-height: 357px;
+    }
+}

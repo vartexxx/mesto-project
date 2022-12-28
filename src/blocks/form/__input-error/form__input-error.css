@@ -7,5 +7,6 @@
     font-size: 12px;
     margin-top: 5px;
     max-width: 358px;
-    height: 5px;
+    transition: opacity 0.3s;
+    min-height: 35px;
 }

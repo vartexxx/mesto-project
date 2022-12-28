@@ -10,7 +10,7 @@ export function enableValidation(config){
 
 const isValid = (formElement, inputElement, config) => {
     if (inputElement.validity.patternMismatch) {
-        inputElement.setCustomValidity('Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы.');
+        inputElement.setCustomValidity(inputElement.dataset.errorMessage);
     } else {
         inputElement.setCustomValidity('');
     }
@@ -65,11 +65,8 @@ const toggleButtonState = (inputList, buttonElement, config) => {
 
 export function resetError (form, config) {
     const inputList = Array.from(form.querySelectorAll(config.inputSelector));
-    const errorList = Array.from(form.querySelectorAll(config.inputErrorSelector));
     inputList.forEach((element) => {
         element.classList.remove(config.inputErrorClass);
-    })
-    errorList.forEach((element) => {
-        element.classList.remove(config.errorClass);
+        hideInputError(form, element, config);
     })
 };

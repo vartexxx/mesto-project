@@ -1,5 +1,5 @@
 .form__submit {
-    margin: 40px 0px 0px 0px;
+    margin: 10px 0px 0px 0px;
     padding: 0;
     justify-content: center;
     width: 358px;
@@ -24,7 +24,7 @@
     .form__submit {
         width: 238px;
         height: 46px;
-        margin: 45px auto 25px;
+        margin: 10px auto 25px;
         font-size: 14px;
         line-height: 17px;
     }

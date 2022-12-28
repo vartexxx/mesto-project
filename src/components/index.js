@@ -11,6 +11,7 @@ import {
 import { enableValidation } from './validate.js';
 import { renderInitialCards } from './utils.js';
 
+
 export const validationObjects = {
   formSelector: '.form',
   inputSelector: '.form__input',
@@ -46,9 +47,7 @@ export const newAvatarUrl = document.querySelector('#avatar-link');
 
 document.querySelectorAll('.popup').forEach((element) => {
     element.addEventListener('click', (evt) => {
-      if (evt.target.classList.contains('popup__exit')) {
-        closePopup(element);
-      } else if (evt.target.classList.contains('popup_opened')) {
+      if ((evt.target.classList.contains('popup__exit')) || (evt.target.classList.contains('popup_opened'))) {
         closePopup(element);
       }
     });

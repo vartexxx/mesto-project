@@ -2,6 +2,7 @@ import { cardTemplate} from "./index.js";
 import { openImagePopup } from "./modal.js";
 import { deleteCard, switchLikeButton } from "./utils.js";
 
+
 export function createCard(card) {
     const newCard = cardTemplate.cloneNode(true);
     const newCardElement = newCard.querySelector('.element');
