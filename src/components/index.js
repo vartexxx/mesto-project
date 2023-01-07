@@ -2,6 +2,7 @@ import '../pages/index.css';
 import {
   getInitialCard, getUserInfo,
 } from './api';
+import { generateInitialCard } from './card';
 import { 
   closePopup,
   openEditAvatarPopup,
@@ -45,6 +46,7 @@ export const popupImageGroup = document.querySelector('.popup__image-group');
 export const popupImageTitle = document.querySelector('.popup__image-title');
 export const formNewAvatar = document.querySelector('#edit-avatar');
 export const newAvatarUrl = document.querySelector('#avatar-link');
+export let currentUserId = null;
 
 document.querySelectorAll('.popup').forEach((element) => {
     element.addEventListener('click', (evt) => {
@@ -54,6 +56,33 @@ document.querySelectorAll('.popup').forEach((element) => {
     });
 });
 
+const loadDefaultCards = () => {
+  getUserInfo()
+    .then(() => {
+      getInitialCard()
+        .then((res) => generateInitialCard(res))
+    })
+    .catch((err) => console.log(err));
+}
+
+const loadDefaultProfile = () => {
+  getUserInfo()
+    .then((res) => {
+      currentUserId = res._id;
+      profileName.textContent = res.name;
+      profileHobby.textContent = res.about;
+    })
+    .catch((err) => console.log(err));
+}
+
+const loadDefaultAvatar = () => {
+  getUserInfo()
+    .then((res) => {
+      profileAvatar.src = res.avatar;
+    })
+    .catch((err) => console.log(err))
+}
+
 profileAvatar.addEventListener('click', openEditAvatarPopup);
 addButton.addEventListener('click', openAddCardPopup);
 editButton.addEventListener('click', openProfileEditPopup);
@@ -62,5 +91,7 @@ formNewAvatar.addEventListener('submit', handleAvatarSubmitForm);
 formEditProfile.addEventListener('submit', handleProfileEditSubmitForm);
 
 enableValidation(validationObjects);
-getInitialCard();
+loadDefaultCards();
+loadDefaultProfile();
+loadDefaultAvatar();
 getUserInfo();

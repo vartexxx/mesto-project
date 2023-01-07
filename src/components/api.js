@@ -3,7 +3,6 @@ import { profileAvatar, profileHobby, profileName } from "./index.js";
 import { addCard } from "./utils.js";
 
 const token = 'cf2f740d-de00-436f-a166-58000bce866a';
-export let currentUserId = null;
 
 export const apiConfig = {
     url: 'https://mesto.nomoreparties.co/v1/plus-cohort-18/',
@@ -21,54 +20,60 @@ function getResponse(res) {
 }
 
 export function getInitialCard() {
-    return fetch(`${apiConfig.url}/cards`, {
-        method: 'GET',
+    return fetch(`${apiConfig.url}cards`, {
         headers: apiConfig.headers,
     })
-    .then((res) => getResponse(res))
-    .then((res) => {
-        res.forEach(element => {
-            const newCard = createCard(element.name, element.link, element.likes.length);
-            addCard(newCard);
-        });
-    });
+    .then((res) => getResponse(res));
 }
 
-export function postNewCard(name, link) {
-    return fetch(`${apiConfig.url}/cards`, {
+export function postNewCard(card) {
+    return fetch(`${apiConfig.url}cards`, {
         method: 'POST',
         headers: apiConfig.headers,
         body: JSON.stringify({
-            name: name,
-            link: link,
+            name: card.name,
+            link: card.link,
         })
     })
     .then((res) => getResponse(res));
 }
 
 export function getUserInfo() {
-    return fetch(`${apiConfig.url}/users/me`, {
+    return fetch(`${apiConfig.url}users/me`, {
         method: 'GET',
         headers: apiConfig.headers,
     })
-    .then((res) => getResponse(res))
-    .then((res) => {
-        profileName.textContent = res.name;
-        profileHobby.textContent = res.about;
-        profileAvatar.src = res.avatar;
-        currentUserId = res._id;
-    });
+    .then((res) => getResponse(res));
 }
 
-export function patchUserInfo(name, hobby) {
+export function patchProfileInfo(name, hobby) {
     console.log(name);
-    return fetch(`${apiConfig.url}/users/me`, {
+    return fetch(`${apiConfig.url}users/me`, {
         method: 'PATCH',
         headers: apiConfig.headers,
         body: JSON.stringify({
             name: name,
             about: hobby,
         })
+    })
+    .then((res) => getResponse(res));
+}
+
+export function patchAvatar(link) {
+    return fetch(`${apiConfig.url}users/me/avatar`, {
+        method: 'PATCH',
+        headers: apiConfig.headers,
+        body: JSON.stringify({
+            avatar: `${link}`
+        })
+    })
+    .then((res) => getResponse(res));
+}
+
+export function deleteCardById(id) {
+    return fetch(`${apiConfig.url}cards/${id}`, {
+        method: 'DELETE',
+        headers: apiConfig.headers,
     })
     .then((res) => getResponse(res));
 }
