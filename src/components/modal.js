@@ -18,8 +18,8 @@ import {
     formMesto
 } from "./index.js";
 import { createCard } from "./card.js";
-import { resetInput } from "./utils.js";
-
+import { addCard, resetInput } from "./utils.js";
+import { patchUserInfo, postNewCard } from "./api.js";
 
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -63,13 +63,16 @@ export function closePopupEsc(evt) {
 export function handleProfileEditSubmitForm() {
     profileName.textContent = formInputName.value;
     profileHobby.textContent = formInputHobby.value;
+    patchUserInfo(formInputName.value, formInputHobby.value);
     closePopup(popupProfile);
 }
 
 export function handleMestoSubmitForm(evt) {
     evt.preventDefault();
-    const cardPlace = createCard({name: formCardName.value, link: formCardLink.value});
-    cardList.prepend(cardPlace);
+    const name = formCardName.value;
+    const link = formCardLink.value;
+    addCard(createCard(name, link))
+    postNewCard(name, link);
     closePopup(popupMesto);
 }
 

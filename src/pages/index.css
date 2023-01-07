@@ -59,3 +59,6 @@
 @import url(../blocks/form/__fieldset/form__fieldset.css);
 @import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);
 @import url(../blocks/form/__input/_invalid/form__input_invalid.css);
+@import url(../blocks/element/__like-container/element__like-container.css);
+@import url(../blocks/element/__like-number/element__like-number.css);
+@import url(../blocks/element/__delete/_active/element__delete_active.css);

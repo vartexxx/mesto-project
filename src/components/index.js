@@ -1,4 +1,7 @@
 import '../pages/index.css';
+import {
+  getInitialCard, getUserInfo,
+} from './api';
 import { 
   closePopup,
   openEditAvatarPopup,
@@ -9,7 +12,6 @@ import {
   handleAvatarSubmitForm
 } from './modal.js';
 import { enableValidation } from './validate.js';
-import { renderInitialCards } from './utils.js';
 
 
 export const validationObjects = {
@@ -44,7 +46,6 @@ export const popupImageTitle = document.querySelector('.popup__image-title');
 export const formNewAvatar = document.querySelector('#edit-avatar');
 export const newAvatarUrl = document.querySelector('#avatar-link');
 
-
 document.querySelectorAll('.popup').forEach((element) => {
     element.addEventListener('click', (evt) => {
       if ((evt.target.classList.contains('popup__exit')) || (evt.target.classList.contains('popup_opened'))) {
@@ -60,5 +61,6 @@ formMesto.addEventListener('submit', handleMestoSubmitForm);
 formNewAvatar.addEventListener('submit', handleAvatarSubmitForm);
 formEditProfile.addEventListener('submit', handleProfileEditSubmitForm);
 
-renderInitialCards();
 enableValidation(validationObjects);
+getInitialCard();
+getUserInfo();
