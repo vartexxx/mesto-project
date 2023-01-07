@@ -1,23 +1,25 @@
+import { data } from "autoprefixer";
 import { deleteCardById } from "./api.js";
 import { createCard } from "./card.js";
 import { cardList, validationObjects } from "./index.js";
 import { resetError } from "./validate.js";
 
-export function addCard(element) {
+
+export const addCard = (element) => {
   cardList.append(createCard(element));
-}
+};
 
-export function switchLikeButton(element) {
+export const switchLikeButton = (element) => {
   element.target.classList.toggle('element__like_active');
-}
+};
 
-export function resetInput(element) {
+export const resetInput = (element) => {
   element.reset();
   resetError(element, validationObjects);
   element.querySelector('.form__submit').classList.add('form__submit_disabled');
-}
+};
 
-export function deleteCard(element, data) {
+export const deleteCard = (element, data) => {
   element.target.closest('.element').remove();
   deleteCardById(data._id);
-}
+};

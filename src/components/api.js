@@ -1,10 +1,5 @@
-import { createCard } from "./card.js";
-import { profileAvatar, profileHobby, profileName } from "./index.js";
-import { addCard } from "./utils.js";
-
 const token = 'cf2f740d-de00-436f-a166-58000bce866a';
-
-export const apiConfig = {
+const apiConfig = {
     url: 'https://mesto.nomoreparties.co/v1/plus-cohort-18/',
     headers: {
         authorization: token,
@@ -12,21 +7,22 @@ export const apiConfig = {
     },
 };
 
-function getResponse(res) {
+
+const getResponse = (res) => {
     if (res.ok) {
         return res.json();
     }
     return Promise.reject(`Ошибка: ${res.status}`);
-}
+};
 
-export function getInitialCard() {
+export const getInitialCard = () => {
     return fetch(`${apiConfig.url}cards`, {
         headers: apiConfig.headers,
     })
     .then((res) => getResponse(res));
-}
+};
 
-export function postNewCard(card) {
+export const postNewCard = (card) => {
     return fetch(`${apiConfig.url}cards`, {
         method: 'POST',
         headers: apiConfig.headers,
@@ -36,18 +32,17 @@ export function postNewCard(card) {
         })
     })
     .then((res) => getResponse(res));
-}
+};
 
-export function getUserInfo() {
+export const getUserInfo = () => {
     return fetch(`${apiConfig.url}users/me`, {
         method: 'GET',
         headers: apiConfig.headers,
     })
     .then((res) => getResponse(res));
-}
+};
 
-export function patchProfileInfo(name, hobby) {
-    console.log(name);
+export const patchProfileInfo = (name, hobby) => {
     return fetch(`${apiConfig.url}users/me`, {
         method: 'PATCH',
         headers: apiConfig.headers,
@@ -57,9 +52,9 @@ export function patchProfileInfo(name, hobby) {
         })
     })
     .then((res) => getResponse(res));
-}
+};
 
-export function patchAvatar(link) {
+export const patchAvatar = (link) => {
     return fetch(`${apiConfig.url}users/me/avatar`, {
         method: 'PATCH',
         headers: apiConfig.headers,
@@ -68,12 +63,12 @@ export function patchAvatar(link) {
         })
     })
     .then((res) => getResponse(res));
-}
+};
 
-export function deleteCardById(id) {
+export const deleteCardById = (id) => {
     return fetch(`${apiConfig.url}cards/${id}`, {
         method: 'DELETE',
         headers: apiConfig.headers,
     })
     .then((res) => getResponse(res));
-}
+};

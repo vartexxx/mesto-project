@@ -3,7 +3,7 @@ import { openImagePopup } from "./modal.js";
 import { switchLikeButton, deleteCard, addCard } from "./utils.js";
 
 
-function showTrashButton(owner, trashButton) {
+const showTrashButton = (owner, trashButton) => {
     if(owner._id === currentUserId) {
         return trashButton.classList.add('element__delete_active');
     }
@@ -15,7 +15,7 @@ export const generateInitialCard = (initialArray) => {
     });
 }
 
-export function createCard(data) {
+export const createCard = (data) => {
     const newCard = cardTemplate.cloneNode(true);
     const newCardElement = newCard.querySelector('.element');
     const newCardTitle = newCard.querySelector('.element__title');

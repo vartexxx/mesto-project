@@ -1,4 +1,4 @@
-export function enableValidation(config){
+export const enableValidation = (config) => {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', (evt) => {
@@ -63,10 +63,10 @@ const toggleButtonState = (inputList, buttonElement, config) => {
     }
 };
 
-export function resetError (form, config) {
+export const resetError = (form, config) => {
     const inputList = Array.from(form.querySelectorAll(config.inputSelector));
     inputList.forEach((element) => {
         element.classList.remove(config.inputErrorClass);
         hideInputError(form, element, config);
-    })
+    });
 };
