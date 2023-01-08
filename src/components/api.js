@@ -72,3 +72,19 @@ export const deleteCardById = (id) => {
     })
     .then((res) => getResponse(res));
 };
+
+export const likeCard = (id) => {
+    return fetch(`${apiConfig.url}cards/likes/${id}`, {
+        method: 'PUT',
+        headers: apiConfig.headers,
+    })
+    .then((res) => getResponse(res));
+}
+
+export const dislikeCard = (id) => {
+    return fetch(`${apiConfig.url}cards/likes/${id}`, {
+        method: 'DELETE',
+        headers: apiConfig.headers,
+    })
+    .then((res) => getResponse(res));
+}
