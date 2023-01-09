@@ -1,8 +1,13 @@
-import { likeCard } from "./api.js";
+import { dislikeCard, likeCard } from "./api.js";
 import { cardTemplate, currentUserId } from "./index.js";
 import { openImagePopup } from "./modal.js";
 import { deleteCard, addCard } from "./utils.js";
 
+export const generateInitialCard = (initialArray) => {
+    initialArray.forEach(element => {
+        addCard(element);
+    });
+};
 
 const showTrashButton = (owner, trashButton) => {
     if(owner._id === currentUserId) {
@@ -10,18 +15,28 @@ const showTrashButton = (owner, trashButton) => {
     }
 };
 
-const swtichLikeButton = (id, button, likes) => {
-    if(!button.classList.contains('element__like_active')) {
-        likeCard(id);
-        likes++;
+const switchLike = (id, button, likes) => {
+    if(button.classList.contains('element__like_active')) {
+        dislikeCard(id)
+            .then(() => {
+                button.classList.remove('element__like_active');
+            })
+        likes.textContent--;
+    } else {
+        likeCard(id)
+            .then(() => {
+                button.classList.add('element__like_active');
+            })
+        likes.textContent++;
     }
-};
+}
 
-export const generateInitialCard = (initialArray) => {
-    initialArray.forEach(element => {
-        addCard(element);
-    });
-};
+const swtichCardLikeState = (data, button) => {
+    if(data.some(element => element._id === currentUserId)) {
+        button.classList.toggle('element__like_active');
+    }
+}
+
 
 export const createCard = (data) => {
     const newCard = cardTemplate.cloneNode(true);
@@ -36,12 +51,13 @@ export const createCard = (data) => {
     newCardTitle.textContent = data.name;
     newCardImage.src = data.link;
     newCardImage.alt = data.name;
-    newCardLikes.textContent = likes.length;
-
-    showTrashButton(data.owner, newCardDelete);
+    newCardLikes.textContent = data.likes.length;
 
     newCardImage.addEventListener('click', () => openImagePopup(data.name, data.link));
     newCardDelete.addEventListener('click', (evt) => deleteCard(evt, data));
-    newCardLike.addEventListener('click', () => swtichLikeButton(newCard.id, newCardLike, likes.length));
+    newCardLike.addEventListener('click', () => switchLike(newCard.id, newCardLike, newCardLikes));
+
+    showTrashButton(data.owner, newCardDelete);
+    swtichCardLikeState(data.likes, newCardLike);
     return newCard;
 }
