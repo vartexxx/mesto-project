@@ -18,7 +18,7 @@ import {
     formMesto
 } from "./index.js";
 import { createCard } from "./card.js";
-import { addCard, resetInput } from "./utils.js";
+import { resetInput, addCard } from "./utils.js";
 import { patchProfileInfo, patchAvatar, postNewCard } from "./api.js";
 
 export const openPopup = (popup) => {
@@ -69,10 +69,14 @@ export const handleProfileEditSubmitForm = () => {
 
 export const handleMestoSubmitForm = (evt) => {
     evt.preventDefault();
-    const name = formCardName.value;
-    const link = formCardLink.value;
-    addCard(createCard(name, link))
-    postNewCard(name, link);
+    const card = {
+        name: formCardName.value,
+        link: formCardLink.value,
+    }
+    postNewCard(card).then((res) => {
+        addCard(res);
+        console.log(res.likes.length);
+    });
     closePopup(popupMesto);
 };
 

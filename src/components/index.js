@@ -27,6 +27,7 @@ export const validationObjects = {
 };
 export const popupProfile = document.querySelector('#popup-profile');
 export const profileAvatar = document.querySelector('.profile__avatar');
+export const profileAvatarContainer = document.querySelector('.profile__avatar-container');
 const addButton = document.querySelector('.profile__add-button');
 const editButton = document.querySelector('.profile__edit-button');
 export const popupMesto = document.querySelector('#popup-mesto');
@@ -83,7 +84,12 @@ const loadDefaultAvatar = () => {
     .catch((err) => console.log(err))
 }
 
-profileAvatar.addEventListener('click', openEditAvatarPopup);
+loadDefaultCards();
+loadDefaultProfile();
+loadDefaultAvatar();
+getUserInfo();
+
+profileAvatarContainer.addEventListener('click', openEditAvatarPopup);
 addButton.addEventListener('click', openAddCardPopup);
 editButton.addEventListener('click', openProfileEditPopup);
 formMesto.addEventListener('submit', handleMestoSubmitForm);
@@ -91,7 +97,3 @@ formNewAvatar.addEventListener('submit', handleAvatarSubmitForm);
 formEditProfile.addEventListener('submit', handleProfileEditSubmitForm);
 
 enableValidation(validationObjects);
-loadDefaultCards();
-loadDefaultProfile();
-loadDefaultAvatar();
-getUserInfo();

@@ -17,7 +17,9 @@
             <main class="main">
 
                 <section class="main__profile profile">
-                    <img src="<%=require('./images/avatar_image.jpg')%>" alt="Аватар профиля" class="profile__avatar">
+                    <div class="profile__avatar-container">
+                        <img src="<%=require('./images/avatar_image.jpg')%>" alt="Аватар профиля" class="profile__avatar">
+                    </div>
                     <div class="profile__info">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <p class="profile__hobby">Исследователь океана</p>
@@ -145,7 +147,7 @@
             <h2 class="element__title"></h2>
             <div class="element__like-container">
                 <button type="button" class="element__like"></button>
-                <span class="element__like-number"></span>
+                <span class="element__like-number">0</span>
             </div>
         </div>
     </template>

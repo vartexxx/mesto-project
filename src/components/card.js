@@ -45,14 +45,12 @@ export const createCard = (data) => {
     const newCardLike = newCard.querySelector('.element__like');
     const newCardDelete = newCard.querySelector('.element__delete');
     const newCardLikes = newCard.querySelector('.element__like-number');
-    const likes = data.likes;
 
     newCard.id = data._id;
     newCardTitle.textContent = data.name;
     newCardImage.src = data.link;
     newCardImage.alt = data.name;
     newCardLikes.textContent = data.likes.length;
-
     newCardImage.addEventListener('click', () => openImagePopup(data.name, data.link));
     newCardDelete.addEventListener('click', (evt) => deleteCard(evt, data));
     newCardLike.addEventListener('click', () => switchLike(newCard.id, newCardLike, newCardLikes));
@@ -61,3 +59,5 @@ export const createCard = (data) => {
     swtichCardLikeState(data.likes, newCardLike);
     return newCard;
 }
+
+
