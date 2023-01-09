@@ -14,12 +14,11 @@ import {
     formNewAvatar,
     newAvatarUrl,
     profileAvatar,
-    cardList,
-    formMesto
+    formMesto,
 } from "./index.js";
-import { createCard } from "./card.js";
 import { resetInput, addCard } from "./utils.js";
 import { patchProfileInfo, patchAvatar, postNewCard } from "./api.js";
+
 
 export const openPopup = (popup) => {
     popup.classList.add('popup_opened');
@@ -73,10 +72,7 @@ export const handleMestoSubmitForm = (evt) => {
         name: formCardName.value,
         link: formCardLink.value,
     }
-    postNewCard(card).then((res) => {
-        addCard(res);
-        console.log(res.likes.length);
-    });
+    postNewCard(card).then((res) => addCard(res));
     closePopup(popupMesto);
 };
 

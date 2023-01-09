@@ -1,16 +1,14 @@
 import '../pages/index.css';
-import {
-  getInitialCard, getUserInfo,
-} from './api';
+import { getInitialCard, getUserInfo } from './api';
 import { generateInitialCard } from './card';
-import { 
+import {
   closePopup,
   openEditAvatarPopup,
   openAddCardPopup,
   openProfileEditPopup,
   handleProfileEditSubmitForm,
   handleMestoSubmitForm,
-  handleAvatarSubmitForm
+  handleAvatarSubmitForm,
 } from './modal.js';
 import { enableValidation } from './validate.js';
 
@@ -28,6 +26,8 @@ export const validationObjects = {
 export const popupProfile = document.querySelector('#popup-profile');
 export const profileAvatar = document.querySelector('.profile__avatar');
 export const profileAvatarContainer = document.querySelector('.profile__avatar-container');
+export const popupConfirm = document.querySelector('#popup-confirm');
+export const popupSubmit = document.querySelector('.popup__submit');
 const addButton = document.querySelector('.profile__add-button');
 const editButton = document.querySelector('.profile__edit-button');
 export const popupMesto = document.querySelector('#popup-mesto');
@@ -48,6 +48,7 @@ export const popupImageTitle = document.querySelector('.popup__image-title');
 export const formNewAvatar = document.querySelector('#edit-avatar');
 export const newAvatarUrl = document.querySelector('#avatar-link');
 export let currentUserId = null;
+
 
 document.querySelectorAll('.popup').forEach((element) => {
     element.addEventListener('click', (evt) => {
@@ -89,11 +90,11 @@ loadDefaultProfile();
 loadDefaultAvatar();
 getUserInfo();
 
+enableValidation(validationObjects);
+
 profileAvatarContainer.addEventListener('click', openEditAvatarPopup);
 addButton.addEventListener('click', openAddCardPopup);
 editButton.addEventListener('click', openProfileEditPopup);
 formMesto.addEventListener('submit', handleMestoSubmitForm);
 formNewAvatar.addEventListener('submit', handleAvatarSubmitForm);
 formEditProfile.addEventListener('submit', handleProfileEditSubmitForm);
-
-enableValidation(validationObjects);

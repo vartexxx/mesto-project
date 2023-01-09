@@ -3,6 +3,7 @@ import { cardTemplate, currentUserId } from "./index.js";
 import { openImagePopup } from "./modal.js";
 import { deleteCard, addCard } from "./utils.js";
 
+
 export const generateInitialCard = (initialArray) => {
     initialArray.forEach(element => {
         addCard(element);
@@ -37,7 +38,6 @@ const swtichCardLikeState = (data, button) => {
     }
 }
 
-
 export const createCard = (data) => {
     const newCard = cardTemplate.cloneNode(true);
     const newCardTitle = newCard.querySelector('.element__title');
@@ -59,5 +59,3 @@ export const createCard = (data) => {
     swtichCardLikeState(data.likes, newCardLike);
     return newCard;
 }
-
-

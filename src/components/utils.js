@@ -1,7 +1,6 @@
-import { data } from "autoprefixer";
 import { deleteCardById } from "./api.js";
 import { createCard } from "./card.js";
-import { cardList, currentUserId, validationObjects } from "./index.js";
+import { cardList, validationObjects } from "./index.js";
 import { resetError } from "./validate.js";
 
 
