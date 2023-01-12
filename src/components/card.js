@@ -12,7 +12,7 @@ export const generateInitialCard = (initialArray) => {
 
 const showTrashButton = (owner, trashButton) => {
     if(owner._id === currentUserId) {
-        return trashButton.classList.add('element__delete_active');
+        trashButton.classList.add('element__delete_active');
     }
 };
 
@@ -21,14 +21,16 @@ const switchLike = (id, button, likes) => {
         dislikeCard(id)
             .then(() => {
                 button.classList.remove('element__like_active');
+                likes.textContent--;
             })
-        likes.textContent--;
+            .catch((err) => console.log(err))
     } else {
         likeCard(id)
             .then(() => {
                 button.classList.add('element__like_active');
+                likes.textContent++;
             })
-        likes.textContent++;
+            .catch((err) => console.log(err))
     }
 }
 
