@@ -1,16 +1,12 @@
 import '../pages/index.css';
-import { getInitialCard, getUserInfo } from './api';
-import { generateInitialCard } from './card';
+import { getInitialCard, getUserInfo, patchProfileInfo, postNewCard, patchAvatar } from './api';
+import { generateInitialCard, createCard } from './card';
 import {
   closePopup,
-  openEditAvatarPopup,
-  openAddCardPopup,
-  openProfileEditPopup,
-  handleProfileEditSubmitForm,
-  handleMestoSubmitForm,
-  handleAvatarSubmitForm,
+  openPopup,
 } from './modal.js';
 import { enableValidation } from './validate.js';
+import { resetInput } from './utils.js';
 
 
 export const validationObjects = {
@@ -27,7 +23,7 @@ export const popupProfile = document.querySelector('#popup-profile');
 export const profileAvatar = document.querySelector('.profile__avatar');
 export const profileAvatarContainer = document.querySelector('.profile__avatar-container');
 export const popupConfirm = document.querySelector('#popup-confirm');
-export const popupSubmit = document.querySelector('.popup__submit');
+export const formSubmit = document.querySelector('.form__submit');
 const addButton = document.querySelector('.profile__add-button');
 const editButton = document.querySelector('.profile__edit-button');
 export const popupMesto = document.querySelector('#popup-mesto');
@@ -50,6 +46,21 @@ export const newAvatarUrl = document.querySelector('#avatar-link');
 export let currentUserId = null;
 
 
+Promise.all([
+  getInitialCard(),
+  getUserInfo()
+])
+  .then((res) => {
+    currentUserId = res[1]._id;
+    profileName.textContent = res[1].name;
+    profileHobby.textContent = res[1].about;
+    profileAvatar.src = res[1].avatar
+    getInitialCard()
+      .then((res) => generateInitialCard(res))
+      .catch((err) => console.log(`Ошибка генерации карточек ${err}`))
+  .catch((err) => console.log(`Ошибка ${err}`))
+  });
+
 document.querySelectorAll('.popup').forEach((element) => {
     element.addEventListener('click', (evt) => {
       if ((evt.target.classList.contains('popup__exit')) || (evt.target.classList.contains('popup_opened'))) {
@@ -58,43 +69,61 @@ document.querySelectorAll('.popup').forEach((element) => {
     });
 });
 
-const loadDefaultCards = () => {
-  getUserInfo()
-    .then(() => {
-      getInitialCard()
-        .then((res) => generateInitialCard(res))
-    })
-    .catch((err) => console.log(err));
-}
-
-const loadDefaultProfile = () => {
-  getUserInfo()
+profileAvatarContainer.addEventListener('click', () => {
+  resetInput(formNewAvatar);
+  openPopup(popupAvatar);
+});
+addButton.addEventListener('click', () => {
+  resetInput(formMesto);
+  openPopup(popupMesto);
+});
+editButton.addEventListener('click', () => {
+  openPopup(popupProfile);
+  formInputName.value = profileName.textContent;
+  formInputHobby.value = profileHobby.textContent;
+});
+const saveProfilePopup = (evt) => {
+  evt.preventDefault();
+  formSubmit.textContent = 'Сохранение...';
+  patchProfileInfo(formInputName.value, formInputHobby.value)
     .then((res) => {
-      currentUserId = res._id;
       profileName.textContent = res.name;
       profileHobby.textContent = res.about;
+      closePopup(popupProfile);
     })
-    .catch((err) => console.log(err));
-}
-
-const loadDefaultAvatar = () => {
-  getUserInfo()
+    .catch((err) => console.log(`Ошибка ${err}`))
+    .finally(() => formSubmit.textContent = 'Сохранить');
+};
+const saveMestoPopup = (evt) => {
+  evt.preventDefault();
+  formSubmit.textContent = 'Создание...';
+  const card = {
+    name: formCardName.value,
+    link: formCardLink.value,
+  };
+  postNewCard(card)
     .then((res) => {
-      profileAvatar.src = res.avatar;
+      cardList.prepend(createCard(res))
+      closePopup(popupMesto);
     })
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(`Ошибка ${err}`))
+    .finally(() => formSubmit.textContent = 'Создать')
+}
+const saveAvatarPopup = (evt) => {
+  evt.preventDefault();
+  formSubmit.textContent = 'Сохранение...';
+  patchAvatar(newAvatarUrl.value)
+    .then((res) => {
+      profileAvatar.src = res.avatar
+      resetInput(formNewAvatar);
+      closePopup(popupAvatar);
+    })
+    .catch((err) => console.log(`Ошибка ${err}`))
+    .finally(() => formSubmit.textContent = 'Сохранить')
 }
 
-loadDefaultCards();
-loadDefaultProfile();
-loadDefaultAvatar();
-getUserInfo();
+formEditProfile.addEventListener('submit', saveProfilePopup);
+formMesto.addEventListener('submit', saveMestoPopup);
+formNewAvatar.addEventListener('submit', saveAvatarPopup);
 
 enableValidation(validationObjects);
-
-profileAvatarContainer.addEventListener('click', openEditAvatarPopup);
-addButton.addEventListener('click', openAddCardPopup);
-editButton.addEventListener('click', openProfileEditPopup);
-formMesto.addEventListener('submit', handleMestoSubmitForm);
-formNewAvatar.addEventListener('submit', handleAvatarSubmitForm);
-formEditProfile.addEventListener('submit', handleProfileEditSubmitForm);
