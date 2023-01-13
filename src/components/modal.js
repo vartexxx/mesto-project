@@ -2,22 +2,7 @@ import {
     popupImageTitle,
     popupImageGroup,
     popupImage,
-    popupAvatar,
-    popupMesto,
-    popupProfile,
-    formInputName,
-    formInputHobby,
-    profileName,
-    profileHobby,
-    formCardName,
-    formCardLink,
-    formNewAvatar,
-    newAvatarUrl,
-    profileAvatar,
-    formMesto,
 } from "./index.js";
-import { resetInput, addCard } from "./utils.js";
-import { patchProfileInfo, patchAvatar, postNewCard } from "./api.js";
 
 
 export const openPopup = (popup) => {
