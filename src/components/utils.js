@@ -16,6 +16,7 @@ export const resetInput = (element) => {
   element.reset();
   resetError(element, validationObjects);
   element.querySelector('.form__submit').classList.add('form__submit_disabled');
+  element.querySelector('.form__submit').disabled = true;
 };
 
 export const deleteCard = (element, data) => {

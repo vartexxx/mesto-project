@@ -1,5 +1,11 @@
 import '../pages/index.css';
-import { getInitialCard, getUserInfo, patchProfileInfo, postNewCard, patchAvatar } from './api';
+import { 
+  getInitialCard,
+  getUserInfo,
+  patchProfileInfo,
+  postNewCard,
+  patchAvatar
+} from './api';
 import { generateInitialCard, createCard } from './card';
 import {
   closePopup,
@@ -54,12 +60,9 @@ Promise.all([
     currentUserId = res[1]._id;
     profileName.textContent = res[1].name;
     profileHobby.textContent = res[1].about;
-    profileAvatar.src = res[1].avatar
-    getInitialCard()
-      .then((res) => generateInitialCard(res))
-      .catch((err) => console.log(`Ошибка генерации карточек ${err}`))
-  .catch((err) => console.log(`Ошибка ${err}`))
-  });
+    profileAvatar.src = res[1].avatar;
+    generateInitialCard(res[0])})
+  .catch((err) => console.log(`Ошибка ${err}`));
 
 document.querySelectorAll('.popup').forEach((element) => {
     element.addEventListener('click', (evt) => {
